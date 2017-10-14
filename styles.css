@@ -25,6 +25,8 @@
   justify-content: center;
 }
 
+
+
 #navbar{
   grid-column: 1/25;
   grid-row: 1/2;
@@ -37,7 +39,18 @@
 }
 
 #page{
-  grid-column:2/24;
+  grid-column:4/22;
   grid-row:2/16;
   background-color:lightblue;
+  display: flex;
+  flex-direction: column;
+  align-content:center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap:nowrap;
+
+}
+
+#page h1{
+  text-align:center;
 }

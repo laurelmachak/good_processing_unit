@@ -37,7 +37,7 @@
 }
 
 #page{
-  grid-column:2/24;
+  grid-column:3/23;
   grid-row:2/16;
   background-color:lightblue;
 }

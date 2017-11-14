@@ -25,6 +25,8 @@
   justify-content: center;
 }
 
+
+
 #navbar{
   grid-column: 1/25;
   grid-row: 1/2;
@@ -37,7 +39,22 @@
 }
 
 #page{
+<<<<<<< HEAD
   grid-column:3/23;
+=======
+  grid-column:4/22;
+>>>>>>> 341b199ea29a712fd628aaf2f0d802695ebf4e91
   grid-row:2/16;
   background-color:lightblue;
+  display: flex;
+  flex-direction: column;
+  align-content:center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap:nowrap;
+
+}
+
+#page h1{
+  text-align:center;
 }

@@ -14,3 +14,23 @@ becomes stupider than at other times like the noble and magnanimous
 person He possesses feelings of pleasure and pain of such intensity
 that the intellect must either be silent before them or yield itself to
 their service his heart then goes into his head and one henceforth"""
+
+def get_blog_post(filename):
+    ''' reads the content from a text file
+    and returns 2 item tuple
+    containing the title and post '''
+    with open(filename,'r') as f:
+        content = f.readlines()
+        title = content[0].strip()
+        post = " ".join(content[1:])
+        post.replace("\n", " ")
+    return title, post
+
+
+get_blog_post('./database/post_01.txt')
+
+class BlogPost (object):
+    def __init__(self, title, content, author="anonymous"):
+        pass
+
+    

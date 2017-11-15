@@ -7,7 +7,12 @@
 {% endblock %}
 
 {% block body %}
-  <h1>Good Processing Unit: Blog</h1>
-    <h3>{{ title }}</h3>
-    <p>{{ post }}</p>
+ <h1>Good Processing Unit: Blog</h1>
+<ul>
+{% for post in posts %}
+    <li><a href="posts/{{post.id}}">{{post.title}}</a></li>
+    <h3>{{ post["title"] }}</h3>
+    <p>{{ post["post_body"] }}</p>
+{% endfor %}
+</ul>
 {% endblock %}

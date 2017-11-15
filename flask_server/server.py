@@ -1,16 +1,16 @@
 from flask import Flask, render_template
+#from flask_sqlalchemy import SQLAlchemy
 from database import methods
 
 app = Flask(__name__)
+# TODO add app.config to connect to a db
+#db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
-    post_content = methods.get_blog_post('./database/post_01.txt')
-    title = post_content[0]
-    post = post_content[1]
-    filler = methods.dummy_text()
+    posts = methods.get_all_posts()[0]
     
-    return render_template('index.html', title=title, post=post)
+    return render_template('index.html', posts=posts)
 
 @app.route('/about')
 def about():
@@ -20,6 +20,10 @@ def about():
 def faq():
     return render_template('faq.html')
 
+@app.route('/posts/<string:id>/')
+def post(id):
+    return render_template('show-post.html', id=id, post=methods.get_all_posts()[0][int(id)])
+    
 if __name__ == "__main__":
     app.run(debug=True)
     

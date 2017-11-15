@@ -1,4 +1,4 @@
-import methods, os, re
+#import methods, os, re
 
 beg_file_name_regex = re.compile(r'post_.*')
 

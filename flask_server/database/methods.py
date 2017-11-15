@@ -1,24 +1,10 @@
-def dummy_text():
-    return """and that this thought of the end and advantage is even
-stronger than its strongest impulse not to be tempted to inexpedient
-activities by its impulses that is its wisdom and inspiration In
-comparison with the ignoble nature the higher nature is more
-irrational for the noble magnanimous and self sacrificing person
-succumbs in fact to his impulses and in his best moments his reason
-lapses altogether An animal which at the risk of life protects its
-young or in the pairing season follows the female where it meets with
-death does not think of the risk and the death its reason pauses
-likewise because its delight in its young or in the female and the
-fear of being deprived of this delight dominate it exclusively it
-becomes stupider than at other times like the noble and magnanimous
-person He possesses feelings of pleasure and pain of such intensity
-that the intellect must either be silent before them or yield itself to
-their service his heart then goes into his head and one henceforth"""
+import os, re
 
 def get_blog_post(filename):
     ''' reads the content from a text file
     and returns 2 item tuple
-    containing the title and post '''
+    containing the title (line 1) and post (rest of content) 
+    as strings '''
     with open(filename,'r') as f:
         content = f.readlines()
         title = content[0].strip()
@@ -27,10 +13,30 @@ def get_blog_post(filename):
     return title, post
 
 
-get_blog_post('./database/post_01.txt')
+#get_blog_post('./database/post_01.txt')
 
-class BlogPost (object):
-    def __init__(self, title, content, author="anonymous"):
-        pass
+
+def get_all_posts():
+    beg_file_name_regex = re.compile(r'post_*')
+    path_to_all_db_files = "/Users/Laurel/Desktop/good_processing_unit/flask_server/database"
+    all_files_in_db = os.listdir(path_to_all_db_files)
+    
+    post_file_names = []
+    for file in all_files_in_db:
+        if len(beg_file_name_regex.findall(file)) > 0:
+            post_file_names.append(file)
+            
+    post_ids_list = []
+    all_posts = []
+    
+   
+    
+    for file in post_file_names:
+        post_content = get_blog_post(path_to_all_db_files + '/' + file)
+        all_posts.append({'id': len(post_ids_list), 'source': file, 'title': post_content[0], 'post_body': post_content[1]})
+        post_ids_list.append(len(post_ids_list))
+    
+    return all_posts, post_ids_list
+
 
     

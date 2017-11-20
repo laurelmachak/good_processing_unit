@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} contact {% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+
+{% block body %}
+  <h1>Contact Us</h1>
+<div class="contact_form">
+<form>
+<input name="email" type="email" />
+<textarea name="content"></textarea>
+</form>
+    </div>
+{% endblock %}

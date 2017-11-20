@@ -20,6 +20,10 @@ def about():
 def faq():
     return render_template('faq.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact-us.html')
+
 @app.route('/posts/<string:id>/')
 def post(id):
     return render_template('show-post.html', id=id, post=methods.get_all_posts()[0][int(id)])

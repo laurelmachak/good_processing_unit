@@ -38,5 +38,14 @@ def get_all_posts():
     
     return all_posts, post_ids_list
 
+def create_post_file(title,body):
+    existing_posts = get_all_posts()[0]
+    post_id = len(existing_posts) + 1
+    path_to_all_db_files = "/Users/Laurel/Desktop/good_processing_unit/flask_server/database"
+    filename = "post_" + str(post_id) + ".txt"
+    with open(path_to_all_db_files + "/" + filename, 'w') as f:
+        f.write(title)
+        f.write(body)
+
 
     

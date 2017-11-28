@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 #from flask_sqlalchemy import SQLAlchemy
 from database import methods
 
@@ -23,6 +23,18 @@ def faq():
 @app.route('/contact')
 def contact():
     return render_template('contact-us.html')
+
+@app.route('/posts/new', methods = ['POST', 'GET'])
+def new_blog_post():
+    error = None
+    
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        methods.create_post_file(title,body)
+        return render_template('index.html')
+    else:
+        return render_template('new-post.html')
 
 @app.route('/posts/<string:id>/')
 def post(id):

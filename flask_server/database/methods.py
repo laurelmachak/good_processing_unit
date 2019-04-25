@@ -17,8 +17,9 @@ def get_blog_post(filename):
 
 
 def get_all_posts():
+    CWD = os.getcwd()
     beg_file_name_regex = re.compile(r'post_*')
-    path_to_all_db_files = "/Users/Laurel/Desktop/good_processing_unit/flask_server/database"
+    path_to_all_db_files = CWD + "/database"
     all_files_in_db = os.listdir(path_to_all_db_files)
     
     post_file_names = []
